@@ -14,6 +14,13 @@ export type SchoolType = "HIGH_SCHOOL" | "COLLEGE" | "JUCO" | "OTHER";
 export type Bats = "L" | "R" | "S";
 export type Throws = "L" | "R";
 
+export interface Organization {
+  id: string;
+  mlbamId?: number;
+  name: string;
+  abbreviation: string;
+}
+
 export interface DraftPick {
   id: string;
   playerId: string;
@@ -64,9 +71,27 @@ export interface Player {
   throws?: Throws;
   /** Where the player currently sits; absent implies unknown / unsigned. */
   currentOrganizationId?: string;
+  /** Display name of the current affiliate/team (e.g. "Akron RubberDucks"). */
+  currentAffiliateName?: string;
   currentLevel: DevelopmentLevel;
   highestLevelReached: DevelopmentLevel;
   status: PlayerStatus;
   /** Milestones-lite for the drawer timeline (M1); full history arrives in M2. */
   milestones?: Milestone[];
+}
+
+/** A draft pick joined with its player — the unit the road renders. */
+export interface DraftClassEntry {
+  pick: DraftPick;
+  player: Player;
+}
+
+/** One team's draft class for a single year. */
+export interface DraftClass {
+  /** Drafting organization id (e.g. "CLE"). */
+  team: string;
+  year: number;
+  /** Date the current-status fields were resolved (point-in-time snapshot). */
+  asOf: string;
+  entries: DraftClassEntry[];
 }
