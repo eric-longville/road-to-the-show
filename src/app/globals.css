@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Road visualization */
+  --road-surface: #eef2f7;
+  --road-asphalt: #334155;
+  --road-line: #f8d24a;
+  --road-ink: #0f172a;
+  --road-muted: #64748b;
 }
 
 @theme inline {
@@ -16,6 +23,12 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --road-surface: #131a26;
+    --road-asphalt: #1e293b;
+    --road-line: #d4a017;
+    --road-ink: #e2e8f0;
+    --road-muted: #94a3b8;
   }
 }
 

@@ -1,3 +1,9 @@
 // Extends Vitest's `expect` with jest-dom matchers (toBeInTheDocument, etc.)
-// for the component tests that arrive later in M1.
+// and unmounts React trees between tests so component DOM doesn't accumulate.
 import "@testing-library/jest-dom/vitest";
+import { afterEach } from "vitest";
+import { cleanup } from "@testing-library/react";
+
+afterEach(() => {
+  cleanup();
+});
